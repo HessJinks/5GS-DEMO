@@ -30,6 +30,7 @@ credentials.json
 *.tmp
 *.log
 .cache/
+temp-bk/
 
 # Build artifacts
 build/

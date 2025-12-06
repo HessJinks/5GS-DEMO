@@ -1,0 +1,39 @@
+🎉 Open5GS 5G Core Network has been deployed!
+
+📊 Deployment Status:
+  Namespace: {{ .Values.global.namespace }}
+  Release:   {{ .Release.Name }}
+
+🌐 Access Points:
+{{- if .Values.webui.enabled }}
+  WebUI:     http://localhost:{{ .Values.webui.service.nodePort }}
+  Username:  {{ .Values.webui.admin.username }}
+  Password:  {{ .Values.webui.admin.password }}
+{{- end }}
+
+📱 Network Configuration:
+  PLMN:      MCC={{ .Values.network.plmn.mcc }}, MNC={{ .Values.network.plmn.mnc }}
+  TAC:       {{ .Values.network.tac }}
+  UE Subnet: {{ .Values.network.ueSubnet }}
+  DNN:       {{ .Values.subscriber.dnn }}
+
+📋 Check deployment status:
+  kubectl get pods -n {{ .Values.global.namespace }}
+
+🔍 View UE logs:
+  kubectl logs -n {{ .Values.global.namespace }} deployment/ueransim-gnb -c ue --tail=50
+
+✅ Expected success messages:
+  [nas] [info] Initial Registration is successful
+  [nas] [info] PDU Session establishment is successful PSI[1]
+  [app] [info] Connection setup for PDU session[1] is successful
+
+📚 For more information:
+  helm status {{ .Release.Name }}
+  helm get all {{ .Release.Name }}
+
+🔧 To upgrade:
+  helm upgrade {{ .Release.Name }} .
+
+🗑️  To uninstall:
+  helm uninstall {{ .Release.Name }}
