@@ -1,0 +1,51 @@
+# Source code directories (large, should be cloned separately)
+# Use leading slash to only match at root level
+/open5gs/
+/UERANSIM/
+
+# Docker build artifacts
+*.tar
+*.tar.gz
+
+# Kubernetes secrets and sensitive data
+**/secrets/
+*.key
+*.pem
+*.crt
+credentials.json
+
+# IDE and editor files
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Claude Code settings (user-specific)
+.claude/
+
+# Temporary files
+*.tmp
+*.log
+.cache/
+
+# Build artifacts
+build/
+dist/
+*.o
+*.so
+*.a
+
+# Node modules (if any)
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment files
+.env
+.env.local
