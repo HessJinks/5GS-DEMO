@@ -16,8 +16,8 @@ data:
             port: 7777
             advertise: {{ include "open5gs-5g.serviceFQDN" (dict "name" "amf" "root" .) }}
         client:
-          scp:
-            - uri: http://{{ include "open5gs-5g.serviceFQDN" (dict "name" "scp" "root" .) }}:7777
+          nrf:
+            - uri: http://{{ include "open5gs-5g.serviceFQDN" (dict "name" "nrf" "root" .) }}:7777
       ngap:
         server:
           - address: 0.0.0.0

@@ -14,7 +14,7 @@ images:
     repository: local/ueransim
     tag: latest
   webui:
-    repository: local/webui
+    repository: local/open5gs-webui
     tag: latest
   mongodb:
     repository: mongo
@@ -143,7 +143,7 @@ open5gs:
       type: NodePort
       ngap:
         port: 38412
-        nodePort: 38412
+        nodePort: 30412
     resources:
       requests:
         memory: "256Mi"
@@ -166,10 +166,10 @@ open5gs:
       type: NodePort
       gtpu:
         port: 2152
-        nodePort: 2152
+        nodePort: 30152
       pfcp:
         port: 8805
-        nodePort: 8805
+        nodePort: 30805
     resources:
       requests:
         memory: "512Mi"
@@ -180,9 +180,9 @@ ueransim:
   enabled: true
   gnb:
     replicas: 1
-    linkIp: "127.0.0.1"
-    ngapIp: "10.244.0.0"  # Will be pod IP
-    gtpIp: "10.244.0.0"   # Will be pod IP
+    linkIp: "0.0.0.0"
+    ngapIp: "0.0.0.0"
+    gtpIp: "0.0.0.0"
     resources:
       requests:
         memory: "256Mi"

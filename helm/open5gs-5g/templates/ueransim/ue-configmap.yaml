@@ -12,22 +12,25 @@ data:
     routingIndicator: '0000'
 
     key: '{{ .Values.subscriber.key }}'
-    op: ''
+    op: '{{ .Values.subscriber.opc }}'
     opType: 'OPC'
-    opc: '{{ .Values.subscriber.opc }}'
     amf: '8000'
 
     imei: '356938035643803'
     imeiSv: '4370816125816151'
 
     gnbSearchList:
-      - {{ .Values.ueransim.gnb.linkIp }}
+      - 127.0.0.1
 
     sessions:
       - type: 'IPv4'
         apn: '{{ .Values.subscriber.dnn }}'
         slice:
           sst: 1
+
+    integrityMaxRate:
+      uplink: 'full'
+      downlink: 'full'
 
     configured-nssai:
       - sst: 1
@@ -44,4 +47,16 @@ data:
       EA1: true
       EA2: true
       EA3: true
+
+    uacAic:
+      mps: false
+      mcs: false
+
+    uacAcc:
+      normalClass: 0
+      class11: false
+      class12: false
+      class13: false
+      class14: false
+      class15: false
 {{- end }}

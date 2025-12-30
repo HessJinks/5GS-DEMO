@@ -40,13 +40,20 @@ spec:
         image: "{{ .Values.images.open5gs.repository }}:{{ .Values.images.open5gs.tag }}"
         imagePullPolicy: {{ .Values.global.imagePullPolicy }}
         command: ["/bin/open5gs-nssfd"]
-        args: ["-c", "/opt/open5gs/etc/open5gs/nssf.yaml"]
+        args: ["-c", "/etc/open5gs/nssf.yaml"]
         ports:
         - containerPort: 7777
           name: sbi
           protocol: TCP
+        volumeMounts:
+        - name: nssf-config
+          mountPath: /etc/open5gs
         {{- if .Values.open5gs.nssf.resources }}
         resources:
           {{- toYaml .Values.open5gs.nssf.resources | nindent 10 }}
         {{- end }}
+      volumes:
+      - name: nssf-config
+        configMap:
+          name: nssf-config
 {{- end }}

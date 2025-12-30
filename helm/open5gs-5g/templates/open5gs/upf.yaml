@@ -50,7 +50,7 @@ spec:
         image: "{{ .Values.images.open5gs.repository }}:{{ .Values.images.open5gs.tag }}"
         imagePullPolicy: {{ .Values.global.imagePullPolicy }}
         command: ["/bin/sh"]
-        args: ["-c", "/upf-entrypoint.sh"]
+        args: ["/scripts/upf-entrypoint.sh"]
         ports:
         - containerPort: 8805
           name: pfcp
@@ -62,7 +62,11 @@ spec:
           {{- toYaml .Values.securityContext | nindent 10 }}
         volumeMounts:
         - name: upf-config
-          mountPath: /etc/open5gs
+          mountPath: /etc/open5gs/upf.yaml
+          subPath: upf.yaml
+        - name: upf-config
+          mountPath: /scripts/upf-entrypoint.sh
+          subPath: upf-entrypoint.sh
         {{- if .Values.open5gs.upf.resources }}
         resources:
           {{- toYaml .Values.open5gs.upf.resources | nindent 10 }}

@@ -55,8 +55,10 @@ echo -e "${GREEN}Deleting WebUI and MongoDB...${NC}"
 kubectl delete -f k8s/open5gs/webui.yaml --ignore-not-found
 kubectl delete -f k8s/open5gs/mongodb.yaml --ignore-not-found
 
-echo -e "${GREEN}Deleting namespace...${NC}"
-kubectl delete namespace open5gs --ignore-not-found
+#echo -e "${GREEN}Deleting namespace...${NC}"
+#kubectl delete namespace open5gs --ignore-not-found
+echo "To delete the 'open5gs' namespace, run:"
+echo "  kubectl delete namespace open5gs"
 
 echo ""
 echo -e "${GREEN}Cleanup complete!${NC}"

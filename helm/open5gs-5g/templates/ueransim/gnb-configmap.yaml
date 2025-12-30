@@ -14,6 +14,7 @@ data:
     linkIp: {{ .Values.ueransim.gnb.linkIp }}
     ngapIp: {{ .Values.ueransim.gnb.ngapIp }}
     gtpIp: {{ .Values.ueransim.gnb.gtpIp }}
+    ignoreStreamIds: true
 
     slices:
       - sst: 1
